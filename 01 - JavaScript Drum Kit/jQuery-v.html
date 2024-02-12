@@ -65,14 +65,18 @@
         if (!audio) return;
         audio.currentTime = 0;
         audio.play();
+        // console.log(e);
       });
 
       function removeTransition(e) {
-        if (e.propertyName !== "transform") return;
-        console.log(e);
-        this.removeClass("playing");
+        if (e.originalEvent.propertyName !== "transform") return;
+        console.log(e.originalEvent.propertyName);
+        $(this).removeClass("playing");
       }
 
+      // $(".key").each(function (key) {
+      //   $(this).on("transitionend", removeTransition);
+      // });
       const keys = $(".key");
       keys.each(function () {
         $(this).on("transitionend", removeTransition);
