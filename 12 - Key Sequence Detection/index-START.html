@@ -7,6 +7,22 @@
     <link rel="icon" href="https://fav.farm/🔥" />
   </head>
   <body>
-    <script></script>
+    <script>
+      const pressed = [];
+      const secretCode = "hawking";
+      window.addEventListener("keyup", (e) => {
+        console.log(e.key);
+        pressed.push(e.key);
+        // pressed.splice(
+        //   -secretCode.length - 1,
+        //   pressed.length - secretCode.length
+        // );
+        pressed.splice(0, pressed.length - secretCode.length);
+        console.log(pressed);
+        if (pressed.join("").includes(secretCode)) {
+          cornify_add();
+        }
+      });
+    </script>
   </body>
 </html>
