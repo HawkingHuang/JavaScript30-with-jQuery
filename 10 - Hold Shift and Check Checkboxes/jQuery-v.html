@@ -94,34 +94,30 @@
         <p>Don't forget to tweet your result!</p>
       </div>
     </div>
-
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script>
-      const checkboxes = document.querySelectorAll(
-        '.inbox input[type="checkbox"]'
-      );
-      console.log(checkboxes);
+      const checkboxes = $(".inbox input[type='checkbox']");
       let lastChecked;
 
-      function handleCheck(e) {
+      function handleClick(e) {
         let inBetween = false;
         if (e.shiftKey && this.checked) {
-          checkboxes.forEach((checkbox) => {
-            console.log(checkbox);
-            if (checkbox === this || checkbox === lastChecked) {
+          checkboxes.each(function () {
+            if (this === lastChecked[0] || this === e.target) {
               inBetween = !inBetween;
               console.log("Starting to check them in between!");
             }
 
             if (inBetween) {
-              checkbox.checked = true;
+              $(this).prop("checked", true);
             }
           });
         }
-        lastChecked = this;
+        lastChecked = $(this);
       }
 
-      checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("click", handleCheck);
+      checkboxes.each(function () {
+        $(this).on("click", handleClick);
       });
     </script>
   </body>
