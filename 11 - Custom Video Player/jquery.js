@@ -27,7 +27,7 @@ function handleProgress() {
   progressBar.css({ flexBasis: `${percent}%` });
 }
 
-function skip(e) {
+function skip() {
   console.log(this.dataset.skip);
   video[0].currentTime += parseFloat(this.dataset.skip);
 }
